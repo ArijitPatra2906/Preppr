@@ -29,9 +29,10 @@ export default async function Header() {
           <Image
             src='/orange-logo.png'
             alt='Preppr Logo'
-            width={60}
-            height={60}
-            className='w-16'
+            width={120}
+            height={120}
+            className='w-28'
+            priority
           />
         </Link>
 
