@@ -31,7 +31,7 @@ export default async function Header() {
             alt='Preppr Logo'
             width={120}
             height={120}
-            className='w-28'
+            className='w-20 sm:w-28'
             priority
           />
         </Link>
@@ -53,9 +53,8 @@ export default async function Header() {
           </Link>
         </div>
 
-        <div className='flex items-center space-x-4'>
+        <div className='flex items-center gap-2 sm:gap-4'>
           <HowToCookModal />
-
           <SignedIn>
             {/* Pricing Modal with Built-in Trigger */}
             {user && (
@@ -75,8 +74,11 @@ export default async function Header() {
                         : 'text-stone-500'
                     }`}
                   />
-                  <span>
+                  <span className='hidden sm:inline'>
                     {user.subscriptionTier === 'pro' ? 'Pro Chef' : 'Free Plan'}
+                  </span>
+                  <span className='sm:hidden'>
+                    {user.subscriptionTier === 'pro' ? 'Pro' : 'Free'}
                   </span>
                 </Badge>
               </PricingModal>
@@ -89,19 +91,20 @@ export default async function Header() {
             <SignInButton mode='modal'>
               <Button
                 variant='ghost'
-                className='text-stone-600 hover:text-orange-600 hover:bg-orange-50 font-medium'
+                className='text-stone-600 hover:text-orange-600 hover:bg-orange-50 font-medium text-sm px-3 sm:px-4'
               >
                 Sign In
               </Button>
             </SignInButton>
             <SignUpButton mode='modal'>
-              <Button variant='primary' className='rounded-full px-6'>
-                Get Started
+              <Button className='bg-orange-600 hover:bg-orange-700 text-white rounded-full px-4 sm:px-6 text-sm'>
+                <span className='hidden xs:inline'>Get Started</span>
+                <span className='xs:hidden'>Start</span>
               </Button>
             </SignUpButton>
           </SignedOut>
         </div>
-      </nav>{' '}
+      </nav>
     </header>
   )
 }
