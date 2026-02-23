@@ -31,15 +31,15 @@ export default function RecipeGrid({
   const regularRecipes = meals.slice(1)
 
   return (
-    <div className='min-h-screen bg-gradient-to-b from-white via-orange-50/20 to-white pt-14 pb-16'>
+    <div className='min-h-screen bg-gradient-to-b from-background via-orange-50/20 dark:via-orange-950/10 to-background pt-14 pb-16'>
       <div className='container mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8'>
         {/* Header Section */}
         <div className='mb-12'>
           <Link
             href={backLink}
-            className='inline-flex items-center gap-2 text-stone-600 hover:text-orange-600 transition-all duration-200 mb-6 group'
+            className='inline-flex items-center gap-2 text-muted-foreground hover:text-orange-600 dark:hover:text-orange-400 transition-all duration-200 mb-6 group'
           >
-            <div className='p-1.5 rounded-full bg-stone-100 group-hover:bg-orange-100 transition-colors'>
+            <div className='p-1.5 rounded-full bg-secondary group-hover:bg-orange-100 dark:group-hover:bg-orange-900/30 transition-colors'>
               <ArrowLeft className='w-4 h-4' />
             </div>
             <span className='font-medium'>Back to Dashboard</span>
@@ -47,20 +47,20 @@ export default function RecipeGrid({
 
           <div className='flex flex-col md:flex-row md:items-end md:justify-between gap-6'>
             <div>
-              <div className='inline-flex items-center gap-2 px-4 py-1.5 bg-orange-100 rounded-full mb-4'>
-                <Sparkles className='w-4 h-4 text-orange-600' />
-                <span className='text-sm font-semibold text-orange-700 uppercase tracking-wide'>
+              <div className='inline-flex items-center gap-2 px-4 py-1.5 bg-orange-100 dark:bg-orange-900/30 rounded-full mb-4'>
+                <Sparkles className='w-4 h-4 text-orange-600 dark:text-orange-400' />
+                <span className='text-sm font-semibold text-orange-700 dark:text-orange-400 uppercase tracking-wide'>
                   {type === 'cuisine' ? 'Cuisine Collection' : 'Recipe Collection'}
                 </span>
               </div>
 
-              <h1 className='text-4xl sm:text-5xl lg:text-6xl font-bold text-stone-900 capitalize tracking-tight leading-none mb-3'>
+              <h1 className='text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground capitalize tracking-tight leading-none mb-3'>
                 {displayName}
               </h1>
 
               {!loading && meals.length > 0 && (
-                <p className='text-lg text-stone-600 flex items-center gap-2'>
-                  <span className='inline-flex items-center justify-center w-8 h-8 bg-orange-600 text-white rounded-full text-sm font-bold'>
+                <p className='text-lg text-muted-foreground flex items-center gap-2'>
+                  <span className='inline-flex items-center justify-center w-8 h-8 bg-orange-600 dark:bg-orange-500 text-white rounded-full text-sm font-bold'>
                     {meals.length}
                   </span>
                   curated {displayName} {type === 'cuisine' ? 'dishes' : 'recipes'} for you
@@ -70,13 +70,13 @@ export default function RecipeGrid({
 
             {/* View Toggle */}
             {!loading && meals.length > 0 && (
-              <div className='flex items-center gap-2 bg-white border border-stone-200 rounded-lg p-1 shadow-sm'>
+              <div className='flex items-center gap-2 bg-card border border-border rounded-lg p-1 shadow-sm'>
                 <button
                   onClick={() => setViewMode('masonry')}
                   className={`p-2.5 rounded-md transition-all duration-200 ${
                     viewMode === 'masonry'
-                      ? 'bg-orange-600 text-white shadow-sm'
-                      : 'text-stone-600 hover:bg-stone-100'
+                      ? 'bg-orange-600 dark:bg-orange-500 text-white shadow-sm'
+                      : 'text-muted-foreground hover:bg-secondary'
                   }`}
                   aria-label='Masonry view'
                 >
@@ -86,8 +86,8 @@ export default function RecipeGrid({
                   onClick={() => setViewMode('grid')}
                   className={`p-2.5 rounded-md transition-all duration-200 ${
                     viewMode === 'grid'
-                      ? 'bg-orange-600 text-white shadow-sm'
-                      : 'text-stone-600 hover:bg-stone-100'
+                      ? 'bg-orange-600 dark:bg-orange-500 text-white shadow-sm'
+                      : 'text-muted-foreground hover:bg-secondary'
                   }`}
                   aria-label='Grid view'
                 >
@@ -102,11 +102,11 @@ export default function RecipeGrid({
         {loading && (
           <div className='flex flex-col justify-center items-center py-32'>
             <div className='relative'>
-              <Loader2 className='w-12 h-12 text-orange-600 animate-spin' />
-              <div className='absolute inset-0 w-12 h-12 rounded-full bg-orange-200/30 animate-ping' />
+              <Loader2 className='w-12 h-12 text-orange-600 dark:text-orange-400 animate-spin' />
+              <div className='absolute inset-0 w-12 h-12 rounded-full bg-orange-200/30 dark:bg-orange-800/30 animate-ping' />
             </div>
-            <p className='text-stone-600 font-medium mt-6'>Discovering amazing recipes...</p>
-            <p className='text-stone-400 text-sm mt-1'>This will only take a moment</p>
+            <p className='text-foreground font-medium mt-6'>Discovering amazing recipes...</p>
+            <p className='text-muted-foreground text-sm mt-1'>This will only take a moment</p>
           </div>
         )}
 
@@ -117,11 +117,11 @@ export default function RecipeGrid({
             {featuredRecipe && (
               <div className='mb-12'>
                 <div className='flex items-center gap-2 mb-4'>
-                  <Sparkles className='w-5 h-5 text-orange-600' />
-                  <h2 className='text-xl font-bold text-stone-900'>Featured Recipe</h2>
+                  <Sparkles className='w-5 h-5 text-orange-600 dark:text-orange-400' />
+                  <h2 className='text-xl font-bold text-foreground'>Featured Recipe</h2>
                 </div>
                 <Link href={`/recipe?cook=${encodeURIComponent(featuredRecipe.strMeal)}`}>
-                  <div className='group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 bg-white border border-stone-200'>
+                  <div className='group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 bg-card border border-border'>
                     <div className='grid md:grid-cols-2 gap-0'>
                       {/* Image Side */}
                       <div className='relative aspect-[4/3] md:aspect-auto md:min-h-[400px] overflow-hidden'>
@@ -137,7 +137,7 @@ export default function RecipeGrid({
 
                         {/* Featured Badge */}
                         <div className='absolute top-6 left-6'>
-                          <div className='px-4 py-2 bg-orange-600 text-white rounded-full font-bold text-sm shadow-lg flex items-center gap-2'>
+                          <div className='px-4 py-2 bg-orange-600 dark:bg-orange-500 text-white rounded-full font-bold text-sm shadow-lg flex items-center gap-2'>
                             <Sparkles className='w-4 h-4' />
                             Featured
                           </div>
@@ -146,13 +146,13 @@ export default function RecipeGrid({
 
                       {/* Content Side */}
                       <div className='flex flex-col justify-center p-8 lg:p-12'>
-                        <h3 className='text-3xl lg:text-4xl font-bold text-stone-900 mb-4 group-hover:text-orange-600 transition-colors leading-tight'>
+                        <h3 className='text-3xl lg:text-4xl font-bold text-foreground mb-4 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors leading-tight'>
                           {featuredRecipe.strMeal}
                         </h3>
-                        <p className='text-stone-600 text-lg mb-6 leading-relaxed'>
+                        <p className='text-muted-foreground text-lg mb-6 leading-relaxed'>
                           Discover this incredible {displayName} dish, carefully selected as our top recommendation for you.
                         </p>
-                        <div className='inline-flex items-center gap-2 text-orange-600 font-semibold group-hover:gap-3 transition-all'>
+                        <div className='inline-flex items-center gap-2 text-orange-600 dark:text-orange-400 font-semibold group-hover:gap-3 transition-all'>
                           <span>View Recipe</span>
                           <ArrowLeft className='w-5 h-5 rotate-180' />
                         </div>
@@ -169,7 +169,7 @@ export default function RecipeGrid({
                 {regularRecipes.map((meal, idx) => (
                   <div key={meal.idMeal} className='break-inside-avoid'>
                     <Link href={`/recipe?cook=${encodeURIComponent(meal.strMeal)}`}>
-                      <div className='group relative overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-all duration-300 bg-white border border-stone-200'>
+                      <div className='group relative overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-all duration-300 bg-card border border-border'>
                         {/* Dynamic aspect ratio for variety */}
                         <div className={`relative ${idx % 5 === 0 ? 'aspect-[3/4]' : idx % 3 === 0 ? 'aspect-square' : 'aspect-[4/3]'} overflow-hidden`}>
                           <Image
@@ -210,7 +210,7 @@ export default function RecipeGrid({
             {meals.map((meal) => (
               <div key={meal.idMeal}>
                 <Link href={`/recipe?cook=${encodeURIComponent(meal.strMeal)}`}>
-                  <div className='group relative overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-stone-200'>
+                  <div className='group relative overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-border'>
                     {/* Uniform aspect ratio */}
                     <div className='relative aspect-[4/3] overflow-hidden'>
                       <Image
@@ -246,18 +246,18 @@ export default function RecipeGrid({
         {/* Empty State */}
         {!loading && meals.length === 0 && (
           <div className='text-center py-32'>
-            <div className='inline-flex items-center justify-center w-24 h-24 bg-orange-100 rounded-full mb-6'>
+            <div className='inline-flex items-center justify-center w-24 h-24 bg-orange-100 dark:bg-orange-900/30 rounded-full mb-6'>
               <span className='text-5xl'>🍽️</span>
             </div>
-            <h3 className='text-3xl font-bold text-stone-900 mb-3'>
+            <h3 className='text-3xl font-bold text-foreground mb-3'>
               No recipes found
             </h3>
-            <p className='text-stone-500 text-lg mb-8 max-w-md mx-auto'>
+            <p className='text-muted-foreground text-lg mb-8 max-w-md mx-auto'>
               We couldn&apos;t find any {displayName}{' '}
               {type === 'cuisine' ? 'dishes' : 'recipes'} at the moment.
             </p>
             <Link href={backLink}>
-              <button className='inline-flex items-center gap-2 px-6 py-3 bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-lg transition-colors shadow-md'>
+              <button className='inline-flex items-center gap-2 px-6 py-3 bg-orange-600 hover:bg-orange-700 dark:bg-orange-500 dark:hover:bg-orange-600 text-white font-semibold rounded-lg transition-colors shadow-md'>
                 <ArrowLeft className='w-5 h-5' />
                 Explore More Recipes
               </button>
