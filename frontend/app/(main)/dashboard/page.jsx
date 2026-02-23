@@ -143,7 +143,7 @@ export default async function DashboardPage() {
                         <span className='text-2xl'>
                           {getCountryFlag(area.strArea)}
                         </span>
-                        <span className='font-bold text-foreground group-hover:text-orange-600 transition-colors text-sm flex-1'>
+                        <span className='font-bold text-muted-foreground group-hover:text-orange-600 transition-colors text-sm flex-1'>
                           {area.strArea}
                         </span>
                         <ArrowRight className='w-3 h-3 text-stone-400 group-hover:text-orange-600 transition-all' />
