@@ -107,7 +107,7 @@ export default async function DashboardPage() {
                       <div className='text-2xl mb-1'>
                         {getCategoryEmoji(category.strCategory)}
                       </div>
-                      <h3 className='font-bold text-foreground group-hover:text-orange-600 transition-colors text-[10px] leading-tight'>
+                      <h3 className='font-bold text-muted-foreground group-hover:text-orange-600 transition-colors text-[10px] leading-tight'>
                         {category.strCategory}
                       </h3>
                     </div>
