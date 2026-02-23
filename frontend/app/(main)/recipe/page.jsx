@@ -124,15 +124,15 @@ function RecipeContent() {
   // No recipe name in URL
   if (!recipeName) {
     return (
-      <div className='min-h-screen bg-stone-50 pt-24 pb-16 px-4'>
+      <div className='min-h-screen bg-background pt-24 pb-16 px-4'>
         <div className='container mx-auto max-w-4xl text-center py-20'>
           <div className='bg-orange-50 w-20 h-20 border-2 border-orange-200 flex items-center justify-center mx-auto mb-6'>
             <AlertCircle className='w-10 h-10 text-orange-600' />
           </div>
-          <h2 className='text-2xl font-bold text-stone-900 mb-2'>
+          <h2 className='text-2xl font-bold text-foreground mb-2'>
             No recipe specified
           </h2>
-          <p className='text-stone-600 mb-6 font-light'>
+          <p className='text-muted-foreground mb-6 font-light'>
             Please select a recipe from the dashboard
           </p>
           <Link href='/dashboard'>
@@ -148,14 +148,14 @@ function RecipeContent() {
   // Loading state
   if (loadingRecipe === null || loadingRecipe) {
     return (
-      <div className='min-h-screen bg-stone-50 pt-24 pb-16 px-4'>
+      <div className='min-h-screen bg-background pt-24 pb-16 px-4'>
         <div className='container mx-auto max-w-4xl'>
           <div className='text-center py-20'>
             <ClockLoader className='mx-auto mb-6' color='#dc6300' />
-            <h2 className='text-3xl font-bold text-stone-900 mb-2 tracking-tight'>
+            <h2 className='text-3xl font-bold text-foreground mb-2 tracking-tight'>
               Preparing Your Recipe
             </h2>
-            <p className='text-stone-600 font-light'>
+            <p className='text-muted-foreground font-light'>
               Our AI chef is crafting detailed instructions for{' '}
               <span className='font-bold text-orange-600'>{recipeName}</span>
               ...
@@ -178,15 +178,15 @@ function RecipeContent() {
   // Error state
   if (loadingRecipe === false && !recipe) {
     return (
-      <div className='min-h-screen bg-stone-50 pt-24 pb-16 px-4'>
+      <div className='min-h-screen bg-background pt-24 pb-16 px-4'>
         <div className='container mx-auto max-w-4xl text-center py-20'>
           <div className='bg-red-50 w-20 h-20 border-2 border-red-200 flex items-center justify-center mx-auto mb-6'>
             <AlertCircle className='w-10 h-10 text-red-600' />
           </div>
-          <h2 className='text-2xl font-bold text-stone-900 mb-2'>
+          <h2 className='text-2xl font-bold text-foreground mb-2'>
             Failed to load recipe
           </h2>
-          <p className='text-stone-600 mb-6 font-light'>
+          <p className='text-muted-foreground mb-6 font-light'>
             Something went wrong while loading the recipe. Please try again.
           </p>
           <div className='flex gap-3 justify-center'>
@@ -212,20 +212,20 @@ function RecipeContent() {
 
   // Main recipe view
   return (
-    <div className='min-h-screen bg-stone-50 pt-24 pb-16 px-4'>
+    <div className='min-h-screen bg-background pt-24 pb-16 px-4'>
       <div className='container mx-auto max-w-5xl'>
         {/* Header */}
         <div className='mb-8'>
           <Link
             href='/dashboard'
-            className='inline-flex items-center gap-2 text-stone-600 hover:text-orange-600 transition-colors mb-6 font-medium'
+            className='inline-flex items-center gap-2 text-muted-foreground hover:text-orange-600 transition-colors mb-6 font-medium'
           >
             <ArrowLeft className='w-4 h-4' />
             Back to Dashboard
           </Link>
 
           {/* Title Section */}
-          <div className='bg-white p-8 md:p-10 border-2 border-stone-200 mb-6'>
+          <div className='bg-card p-8 md:p-10 border-2 border-border mb-6'>
             {/* Badges */}
             {recipe.imageUrl && (
               <div className='relative w-full h-72 overflow-hidden mb-7'>
@@ -249,24 +249,24 @@ function RecipeContent() {
               </Badge>
               <Badge
                 variant='outline'
-                className='text-stone-600 border-2 border-stone-200 capitalize'
+                className='text-muted-foreground border-2 border-border capitalize'
               >
                 {recipe.category}
               </Badge>
             </div>
 
             {/* Title */}
-            <h1 className='text-4xl md:text-5xl font-bold text-stone-900 mb-4 tracking-tight'>
+            <h1 className='text-4xl md:text-5xl font-bold text-foreground mb-4 tracking-tight'>
               {recipe.title}
             </h1>
 
             {/* Description */}
-            <p className='text-lg text-stone-600 mb-6 font-light'>
+            <p className='text-lg text-muted-foreground mb-6 font-light'>
               {recipe.description}
             </p>
 
             {/* Meta Info */}
-            <div className='flex flex-wrap gap-6 text-stone-600 mb-6'>
+            <div className='flex flex-wrap gap-6 text-muted-foreground mb-6'>
               <div className='flex items-center gap-2'>
                 <Clock className='w-5 h-5 text-orange-600' />
                 <span className='font-medium'>
@@ -341,8 +341,8 @@ function RecipeContent() {
           {/* Left Column - Ingredients & Nutrition */}
           <div className='lg:col-span-1 space-y-6'>
             {/* Ingredients */}
-            <div className='bg-white p-6 border-2 border-stone-200 lg:sticky lg:top-24'>
-              <h2 className='text-2xl font-bold text-stone-900 mb-4 flex items-center gap-2'>
+            <div className='bg-card p-6 border-2 border-border lg:sticky lg:top-24'>
+              <h2 className='text-2xl font-bold text-foreground mb-4 flex items-center gap-2'>
                 <ChefHat className='w-6 h-6 text-orange-600' />
                 Ingredients
               </h2>
@@ -367,7 +367,7 @@ function RecipeContent() {
                         className='py-3 border-b border-stone-100 last:border-0'
                       >
                         <div className='flex items-baseline justify-between gap-2 mb-1'>
-                          <span className='text-stone-900 font-medium'>
+                          <span className='text-foreground font-medium'>
                             {ingredient.item}
                           </span>
                         </div>
@@ -382,8 +382,8 @@ function RecipeContent() {
 
               {/* Nutrition Info */}
               {recipe.nutrition && (
-                <div className='mt-6 pt-6 border-t-2 border-stone-200'>
-                  <h3 className='font-bold text-stone-900 mb-3 uppercase tracking-wide text-sm flex items-center gap-2'>
+                <div className='mt-6 pt-6 border-t-2 border-border'>
+                  <h3 className='font-bold text-foreground mb-3 uppercase tracking-wide text-sm flex items-center gap-2'>
                     Nutrition (per serving)
                     {!recipeData.isPro && (
                       <span className='text-xs bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full font-semibold'>
@@ -406,8 +406,8 @@ function RecipeContent() {
                         </div>
                       </div>
 
-                      <div className='bg-stone-50 p-3 text-center border-2 border-stone-100'>
-                        <div className='text-lg font-bold text-stone-900'>
+                      <div className='bg-background p-3 text-center border-2 border-stone-100'>
+                        <div className='text-lg font-bold text-foreground'>
                           {recipe.nutrition.protein}
                         </div>
                         <div className='text-xs text-stone-500 font-bold uppercase tracking-wide'>
@@ -415,8 +415,8 @@ function RecipeContent() {
                         </div>
                       </div>
 
-                      <div className='bg-stone-50 p-3 text-center border-2 border-stone-100'>
-                        <div className='text-lg font-bold text-stone-900'>
+                      <div className='bg-background p-3 text-center border-2 border-stone-100'>
+                        <div className='text-lg font-bold text-foreground'>
                           {recipe.nutrition.carbs}
                         </div>
                         <div className='text-xs text-stone-500 font-bold uppercase tracking-wide'>
@@ -424,8 +424,8 @@ function RecipeContent() {
                         </div>
                       </div>
 
-                      <div className='bg-stone-50 p-3 text-center border-2 border-stone-100'>
-                        <div className='text-lg font-bold text-stone-900'>
+                      <div className='bg-background p-3 text-center border-2 border-stone-100'>
+                        <div className='text-lg font-bold text-foreground'>
                           {recipe.nutrition.fat}
                         </div>
                         <div className='text-xs text-stone-500 font-bold uppercase tracking-wide'>
@@ -442,8 +442,8 @@ function RecipeContent() {
           {/* Right Column - Instructions & Tips */}
           <div className='lg:col-span-2 space-y-6'>
             {/* Instructions */}
-            <div className='bg-white p-8 border-2 border-stone-200'>
-              <h2 className='text-2xl font-bold text-stone-900 mb-6'>
+            <div className='bg-card p-8 border-2 border-border'>
+              <h2 className='text-2xl font-bold text-foreground mb-6'>
                 Step-by-Step Instructions
               </h2>
 
@@ -464,7 +464,7 @@ function RecipeContent() {
 
                     {/* Step Content */}
                     <div>
-                      <h3 className='font-bold text-lg text-stone-900 mb-2'>
+                      <h3 className='font-bold text-lg text-foreground mb-2'>
                         {step.title}
                       </h3>
                       <p className='text-stone-700 font-light mb-3'>
@@ -506,7 +506,7 @@ function RecipeContent() {
             {/* General Tips */}
             {recipe.tips && recipe.tips.length > 0 && (
               <div className='bg-gradient-to-br from-orange-50 to-amber-50 p-8 border-2 border-orange-200'>
-                <h2 className='text-2xl font-bold text-stone-900 mb-4 flex items-center gap-2'>
+                <h2 className='text-2xl font-bold text-foreground mb-4 flex items-center gap-2'>
                   <Lightbulb className='w-6 h-6 text-orange-600 fill-orange-600' />
                   Chef&apos;s Tips & Tricks
                   {!recipeData.isPro && (
@@ -538,8 +538,8 @@ function RecipeContent() {
 
             {/* Substitutions */}
             {recipe.substitutions && recipe.substitutions.length > 0 && (
-              <div className='bg-white p-8 border-2 border-stone-200'>
-                <h2 className='text-2xl font-bold text-stone-900 mb-4 flex items-center gap-2'>
+              <div className='bg-card p-8 border-2 border-border'>
+                <h2 className='text-2xl font-bold text-foreground mb-4 flex items-center gap-2'>
                   Ingredient Substitutions
                   {!recipeData.isPro && (
                     <span className='text-xs bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full font-semibold'>
@@ -548,7 +548,7 @@ function RecipeContent() {
                   )}
                 </h2>
 
-                <p className='text-stone-600 mb-6 text-sm font-light'>
+                <p className='text-muted-foreground mb-6 text-sm font-light'>
                   Don&apos;t have everything? Here are some alternatives you can
                   use:
                 </p>
@@ -563,7 +563,7 @@ function RecipeContent() {
                         key={i}
                         className='border-b-2 border-stone-100 pb-4 last:border-0 last:pb-0'
                       >
-                        <h3 className='font-bold text-stone-900 mb-2'>
+                        <h3 className='font-bold text-foreground mb-2'>
                           Instead of{' '}
                           <span className='text-orange-600'>
                             {sub.original}
@@ -575,7 +575,7 @@ function RecipeContent() {
                             <Badge
                               key={j}
                               variant='outline'
-                              className='text-stone-600 border-2 border-stone-200'
+                              className='text-muted-foreground border-2 border-border'
                             >
                               {alt}
                             </Badge>
@@ -598,10 +598,10 @@ export default function RecipePage() {
   return (
     <Suspense
       fallback={
-        <div className='min-h-screen bg-stone-50 pt-24 pb-16 px-4'>
+        <div className='min-h-screen bg-background pt-24 pb-16 px-4'>
           <div className='container mx-auto max-w-4xl text-center py-20'>
             <Loader2 className='w-16 h-16 text-orange-600 animate-spin mx-auto mb-6' />
-            <p className='text-stone-600'>Loading recipe...</p>
+            <p className='text-muted-foreground'>Loading recipe...</p>
           </div>
         </div>
       }

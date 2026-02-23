@@ -287,23 +287,35 @@ Guidelines:
 
     console.log('📤 Saving new recipe to database with title:', normalizedTitle)
 
-    const createRecipeResponse = await fetch(`${STRAPI_URL}/api/recipes`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${STRAPI_API_TOKEN}`,
-      },
-      body: JSON.stringify(strapiRecipeData),
-    })
+    let recipeId = null
+    let saveMessage = 'Recipe generated successfully!'
 
-    if (!createRecipeResponse.ok) {
-      const errorText = await createRecipeResponse.text()
-      console.error('❌ Failed to save recipe:', errorText)
-      throw new Error('Failed to save recipe to database')
+    try {
+      const createRecipeResponse = await fetch(`${STRAPI_URL}/api/recipes`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${STRAPI_API_TOKEN}`,
+        },
+        body: JSON.stringify(strapiRecipeData),
+      })
+
+      if (!createRecipeResponse.ok) {
+        const errorText = await createRecipeResponse.text()
+        console.error('❌ Failed to save recipe:', errorText)
+        console.warn('⚠️ Recipe generated but not saved to database. Continuing anyway...')
+        saveMessage = 'Recipe generated successfully! (Note: Could not save to collection)'
+      } else {
+        const createdRecipe = await createRecipeResponse.json()
+        recipeId = createdRecipe.data.id
+        console.log('✅ Recipe saved to database:', recipeId)
+        saveMessage = 'Recipe generated and saved successfully!'
+      }
+    } catch (saveError) {
+      console.error('❌ Error saving recipe to database:', saveError)
+      console.warn('⚠️ Recipe generated but not saved. Continuing anyway...')
+      saveMessage = 'Recipe generated successfully! (Note: Could not save to collection)'
     }
-
-    const createdRecipe = await createRecipeResponse.json()
-    console.log('✅ Recipe saved to database:', createdRecipe.data.id)
 
     return {
       success: true,
@@ -314,12 +326,12 @@ Guidelines:
         cuisine,
         imageUrl: imageUrl || '',
       },
-      recipeId: createdRecipe.data.id,
+      recipeId: recipeId,
       isSaved: false,
       fromDatabase: false,
       recommendationsLimit: isPro ? 'unlimited' : 5,
       isPro,
-      message: 'Recipe generated and saved successfully!',
+      message: saveMessage,
     }
   } catch (error) {
     console.error('❌ Error in getOrGenerateRecipe:', error)

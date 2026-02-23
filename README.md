@@ -12,7 +12,7 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.0-38bdf8?style=flat&logo=tailwind-css)](https://tailwindcss.com/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-[Live Demo](#) • [Documentation](#) • [Report Bug](#) • [Request Feature](#)
+[Live Demo](https://preppr.vercel.app/)
 
 </div>
 
@@ -109,33 +109,33 @@ Preppr provides an all-in-one platform where you can:
 
 ### Frontend
 
-| Technology | Purpose |
-|-----------|---------|
-| **Next.js 16** | React framework with App Router and Server Components |
-| **React 19** | UI library with latest features |
-| **Tailwind CSS 4** | Utility-first styling |
-| **Shadcn UI** | Accessible component library |
-| **Clerk** | Authentication and user management |
-| **Arcjet** | Security (WAF, rate limiting, bot detection) |
-| **Lucide React** | Icon library |
-| **Sonner** | Toast notifications |
-| **React PDF Renderer** | PDF export functionality |
+| Technology             | Purpose                                               |
+| ---------------------- | ----------------------------------------------------- |
+| **Next.js 16**         | React framework with App Router and Server Components |
+| **React 19**           | UI library with latest features                       |
+| **Tailwind CSS 4**     | Utility-first styling                                 |
+| **Shadcn UI**          | Accessible component library                          |
+| **Clerk**              | Authentication and user management                    |
+| **Arcjet**             | Security (WAF, rate limiting, bot detection)          |
+| **Lucide React**       | Icon library                                          |
+| **Sonner**             | Toast notifications                                   |
+| **React PDF Renderer** | PDF export functionality                              |
 
 ### Backend
 
-| Technology | Purpose |
-|-----------|---------|
-| **Strapi 5** | Headless CMS and API platform |
-| **PostgreSQL** | Primary database (Neon Cloud) |
-| **Node.js 20+** | Runtime environment |
+| Technology      | Purpose                       |
+| --------------- | ----------------------------- |
+| **Strapi 5**    | Headless CMS and API platform |
+| **PostgreSQL**  | Primary database (Neon Cloud) |
+| **Node.js 20+** | Runtime environment           |
 
 ### AI & External Services
 
-| Service | Purpose |
-|---------|---------|
+| Service                  | Purpose                                                         |
+| ------------------------ | --------------------------------------------------------------- |
 | **Google Generative AI** | Recipe generation and image recognition (Gemini 2.5 Flash Lite) |
-| **Unsplash API** | High-quality recipe images |
-| **TheMealDB API** | Public recipe database |
+| **Unsplash API**         | High-quality recipe images                                      |
+| **TheMealDB API**        | Public recipe database                                          |
 
 ---
 
@@ -282,28 +282,28 @@ Preppr/
 
 #### Frontend
 
-| Variable | Description | Example |
-|----------|-------------|---------|
-| `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` | Clerk public key | `pk_test_...` |
-| `CLERK_SECRET_KEY` | Clerk secret key | `sk_test_...` |
-| `ARCJET_KEY` | Arcjet API key | `ajkey_...` |
-| `NEXT_PUBLIC_STRAPI_URL` | Strapi backend URL | `http://localhost:1337` |
-| `STRAPI_API_TOKEN` | Strapi API token | Generated in Strapi admin |
-| `GEMINI_API_KEY` | Google AI Studio API key | Get from [Google AI Studio](https://makersuite.google.com/app/apikey) |
-| `UNSPLASH_ACCESS_KEY` | Unsplash API key | Get from [Unsplash Developers](https://unsplash.com/developers) |
+| Variable                            | Description              | Example                                                               |
+| ----------------------------------- | ------------------------ | --------------------------------------------------------------------- |
+| `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` | Clerk public key         | `pk_test_...`                                                         |
+| `CLERK_SECRET_KEY`                  | Clerk secret key         | `sk_test_...`                                                         |
+| `ARCJET_KEY`                        | Arcjet API key           | `ajkey_...`                                                           |
+| `NEXT_PUBLIC_STRAPI_URL`            | Strapi backend URL       | `http://localhost:1337`                                               |
+| `STRAPI_API_TOKEN`                  | Strapi API token         | Generated in Strapi admin                                             |
+| `GEMINI_API_KEY`                    | Google AI Studio API key | Get from [Google AI Studio](https://makersuite.google.com/app/apikey) |
+| `UNSPLASH_ACCESS_KEY`               | Unsplash API key         | Get from [Unsplash Developers](https://unsplash.com/developers)       |
 
 #### Backend
 
-| Variable | Description |
-|----------|-------------|
-| `DATABASE_HOST` | PostgreSQL host |
-| `DATABASE_PORT` | PostgreSQL port (default: 5432) |
-| `DATABASE_NAME` | Database name |
-| `DATABASE_USERNAME` | Database username |
-| `DATABASE_PASSWORD` | Database password |
-| `APP_KEYS` | Strapi app keys (comma-separated) |
-| `API_TOKEN_SALT` | Strapi API token salt |
-| `ADMIN_JWT_SECRET` | Strapi admin JWT secret |
+| Variable            | Description                       |
+| ------------------- | --------------------------------- |
+| `DATABASE_HOST`     | PostgreSQL host                   |
+| `DATABASE_PORT`     | PostgreSQL port (default: 5432)   |
+| `DATABASE_NAME`     | Database name                     |
+| `DATABASE_USERNAME` | Database username                 |
+| `DATABASE_PASSWORD` | Database password                 |
+| `APP_KEYS`          | Strapi app keys (comma-separated) |
+| `API_TOKEN_SALT`    | Strapi API token salt             |
+| `ADMIN_JWT_SECRET`  | Strapi admin JWT secret           |
 
 ---
 
@@ -314,28 +314,34 @@ Preppr/
 #### Recipe Actions
 
 **`getOrGenerateRecipe(recipeName)`**
+
 - Searches database or generates recipe via AI
 - Returns: `{ success, recipe, cached }`
 
 **`saveRecipeToCollection(recipeId)`**
+
 - Bookmarks recipe for current user
 - Returns: `{ success, message }`
 
 **`getRecipesByPantryIngredients()`**
+
 - AI suggests recipes based on pantry
 - Returns: `{ success, recipes: [{ title, matchPercentage, missingIngredients }] }`
 
 #### Pantry Actions
 
 **`scanPantryImage(base64Image)`**
+
 - AI detects ingredients from image
 - Returns: `{ success, ingredients: [{ name, quantity }] }`
 
 **`addPantryItemManually(name, quantity)`**
+
 - Adds item to user's pantry
 - Returns: `{ success, item }`
 
 **`getPantryItems()`**
+
 - Fetches all pantry items for user
 - Returns: `{ success, items: [] }`
 
@@ -343,14 +349,14 @@ Preppr/
 
 **Base URL**: `https://your-strapi-instance.strapiapp.com/api`
 
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/recipes` | GET | List all public recipes |
-| `/recipes/:id` | GET | Get single recipe |
-| `/recipes` | POST | Create recipe (authenticated) |
-| `/pantry-items` | GET | Get user's pantry |
-| `/pantry-items` | POST | Add pantry item |
-| `/saved-recipes` | GET | Get saved recipes |
+| Endpoint         | Method | Description                   |
+| ---------------- | ------ | ----------------------------- |
+| `/recipes`       | GET    | List all public recipes       |
+| `/recipes/:id`   | GET    | Get single recipe             |
+| `/recipes`       | POST   | Create recipe (authenticated) |
+| `/pantry-items`  | GET    | Get user's pantry             |
+| `/pantry-items`  | POST   | Add pantry item               |
+| `/saved-recipes` | GET    | Get saved recipes             |
 
 **Authentication**: Include `Authorization: Bearer YOUR_API_TOKEN` header
 

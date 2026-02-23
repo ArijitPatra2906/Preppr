@@ -42,7 +42,7 @@ export default function HowToCookModal() {
   return (
     <Dialog open={isOpen} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>
-        <button className='hover:text-orange-600 transition-colors flex items-center gap-1.5 text-sm font-medium text-stone-600 cursor-pointer'>
+        <button className='hover:text-orange-600 dark:hover:text-orange-400 transition-colors flex items-center gap-1.5 text-sm font-medium text-muted-foreground cursor-pointer'>
           <ChefHat className='w-4 h-4' />
           How to Cook?
         </button>
@@ -51,7 +51,7 @@ export default function HowToCookModal() {
       <DialogContent className='max-w-lg'>
         <DialogHeader>
           <DialogTitle className='text-2xl font-serif font-bold flex items-center gap-2'>
-            <ChefHat className='w-6 h-6 text-orange-600' />
+            <ChefHat className='w-6 h-6 text-orange-600 dark:text-orange-400' />
             How to Cook?
           </DialogTitle>
           <DialogDescription>
@@ -63,7 +63,7 @@ export default function HowToCookModal() {
         <form onSubmit={handleSubmit} className='mt-4 space-y-6'>
           {/* Recipe Input */}
           <div>
-            <label className='block text-sm font-medium text-stone-700 mb-2'>
+            <label className='block text-sm font-medium text-foreground mb-2'>
               What would you like to cook?
             </label>
             <div className='relative'>
@@ -72,16 +72,16 @@ export default function HowToCookModal() {
                 value={recipeName}
                 onChange={(e) => setRecipeName(e.target.value)}
                 placeholder='e.g., Chicken Biryani, Chocolate Cake, Pasta Carbonara'
-                className='w-full px-4 py-3 pr-12 border border-stone-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 text-stone-900 placeholder:text-stone-400'
+                className='w-full px-4 py-3 pr-12 border border-border bg-background rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 dark:focus:ring-orange-400 text-foreground placeholder:text-muted-foreground'
                 autoFocus
               />
-              <Search className='absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-stone-400' />
+              <Search className='absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground' />
             </div>
           </div>
 
           {/* Examples */}
-          <div className='bg-orange-50 rounded-xl p-4 border border-orange-100'>
-            <h4 className='text-sm font-semibold text-orange-900 mb-2'>
+          <div className='bg-orange-50 dark:bg-orange-950/20 rounded-xl p-4 border border-orange-100 dark:border-orange-900/30'>
+            <h4 className='text-sm font-semibold text-orange-900 dark:text-orange-400 mb-2'>
               💡 Try These:
             </h4>
             <div className='flex flex-wrap gap-2'>
@@ -91,7 +91,7 @@ export default function HowToCookModal() {
                     key={example}
                     type='button'
                     onClick={() => setRecipeName(example)}
-                    className='px-3 py-1 bg-white text-orange-700 border border-orange-200 rounded-full text-sm hover:bg-orange-100 transition-colors'
+                    className='px-3 py-1 bg-white dark:bg-background text-orange-700 dark:text-orange-400 border border-orange-200 dark:border-orange-800 rounded-full text-sm hover:bg-orange-100 dark:hover:bg-orange-900/30 transition-colors'
                   >
                     {example}
                   </button>
@@ -103,7 +103,7 @@ export default function HowToCookModal() {
           <Button
             type='submit'
             disabled={!recipeName.trim()}
-            className='flex-1 w-full bg-orange-600 hover:bg-orange-700 text-white h-12'
+            className='flex-1 w-full bg-orange-600 hover:bg-orange-700 dark:bg-orange-500 dark:hover:bg-orange-600 text-white h-12'
           >
             <ChefHat className='w-5 h-5 mr-2' />
             Get Recipe

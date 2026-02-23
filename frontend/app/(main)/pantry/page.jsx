@@ -118,24 +118,24 @@ export default function PantryPage() {
   }
 
   return (
-    <div className='min-h-screen bg-gradient-to-b from-white via-orange-50/20 to-white pt-20 pb-16'>
+    <div className='min-h-screen bg-gradient-to-b from-background via-orange-50/20 dark:via-orange-950/10 to-background pt-20 pb-16'>
       <div className='container mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8'>
         {/* Header Section */}
         <div className='mb-12'>
           <div className='flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-8'>
             <div>
-              <div className='inline-flex items-center gap-2 px-4 py-1.5 bg-orange-100 rounded-full mb-4'>
-                <Package className='w-4 h-4 text-orange-600' />
-                <span className='text-sm font-semibold text-orange-700 uppercase tracking-wide'>
+              <div className='inline-flex items-center gap-2 px-4 py-1.5 bg-orange-100 dark:bg-orange-900/30 rounded-full mb-4'>
+                <Package className='w-4 h-4 text-orange-600 dark:text-orange-400' />
+                <span className='text-sm font-semibold text-orange-700 dark:text-orange-400 uppercase tracking-wide'>
                   Your Kitchen Inventory
                 </span>
               </div>
 
-              <h1 className='text-4xl sm:text-5xl lg:text-6xl font-bold text-stone-900 tracking-tight leading-none mb-3'>
+              <h1 className='text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground tracking-tight leading-none mb-3'>
                 My Pantry
               </h1>
 
-              <p className='text-lg text-stone-600'>
+              <p className='text-lg text-muted-foreground'>
                 Manage your ingredients and discover amazing recipes
               </p>
             </div>
@@ -143,7 +143,7 @@ export default function PantryPage() {
             {/* Add to Pantry Button - Desktop */}
             <Button
               onClick={() => setIsModalOpen(true)}
-              className='hidden md:flex bg-orange-600 hover:bg-orange-700 text-white gap-2'
+              className='hidden md:flex bg-orange-600 hover:bg-orange-700 dark:bg-orange-500 dark:hover:bg-orange-600 text-white gap-2'
               size='lg'
             >
               <Plus className='w-5 h-5' />
@@ -154,7 +154,7 @@ export default function PantryPage() {
           {/* Add to Pantry Button - Mobile */}
           <Button
             onClick={() => setIsModalOpen(true)}
-            className='md:hidden w-full bg-orange-600 hover:bg-orange-700 text-white gap-2 mb-4'
+            className='md:hidden w-full bg-orange-600 hover:bg-orange-700 dark:bg-orange-500 dark:hover:bg-orange-600 text-white gap-2 mb-4'
             size='lg'
           >
             <Plus className='w-5 h-5' />
@@ -163,13 +163,13 @@ export default function PantryPage() {
 
           {/* Usage Stats */}
           {itemsData?.scansLimit !== undefined && (
-            <div className='inline-flex items-center gap-3 px-5 py-3 bg-white border border-stone-200 rounded-lg shadow-sm'>
+            <div className='inline-flex items-center gap-3 px-5 py-3 bg-card border border-border rounded-lg shadow-sm'>
               <Sparkles className='w-5 h-5 text-orange-600' />
               <div className='text-sm'>
                 {itemsData.scansLimit === 'unlimited' ? (
                   <>
                     <span className='font-bold text-green-600 text-lg'>∞</span>
-                    <span className='text-stone-600 ml-1'>
+                    <span className='text-muted-foreground ml-1'>
                       Unlimited AI scans
                     </span>
                     <span className='ml-1 px-2 py-0.5 bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-bold rounded-full'>
@@ -178,7 +178,7 @@ export default function PantryPage() {
                   </>
                 ) : (
                   <PricingModal>
-                    <span className='text-stone-600 cursor-pointer hover:text-orange-600 transition-colors'>
+                    <span className='text-muted-foreground cursor-pointer hover:text-orange-600 transition-colors'>
                       Upgrade to Pro for unlimited Pantry scans →
                     </span>
                   </PricingModal>
@@ -193,11 +193,11 @@ export default function PantryPage() {
           <Link href='/pantry/recipes' className='block mb-12'>
             <div className='relative overflow-hidden bg-gradient-to-br from-green-600 via-emerald-600 to-teal-600 text-white p-8 rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer group border border-green-700'>
               {/* Decorative Elements */}
-              <div className='absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -mr-32 -mt-32' />
+              <div className='absolute top-0 right-0 w-64 h-64 bg-card/5 rounded-full -mr-32 -mt-32' />
               <div className='absolute bottom-0 left-0 w-48 h-48 bg-black/10 rounded-full -ml-24 -mb-24' />
 
               <div className='relative flex items-center gap-6'>
-                <div className='p-4 bg-white/20 backdrop-blur-sm rounded-xl group-hover:bg-white/30 group-hover:scale-110 transition-all duration-300 border border-white/30'>
+                <div className='p-4 bg-card/20 backdrop-blur-sm rounded-xl group-hover:bg-card/30 group-hover:scale-110 transition-all duration-300 border border-white/30'>
                   <ChefHat className='w-10 h-10' />
                 </div>
                 <div className='flex-1'>
@@ -238,7 +238,7 @@ export default function PantryPage() {
               <Loader2 className='w-12 h-12 text-orange-600 animate-spin' />
               <div className='absolute inset-0 w-12 h-12 rounded-full bg-orange-200/30 animate-ping' />
             </div>
-            <p className='text-stone-600 font-medium mt-6'>
+            <p className='text-muted-foreground font-medium mt-6'>
               Loading your pantry...
             </p>
             <p className='text-stone-400 text-sm mt-1'>
@@ -251,13 +251,13 @@ export default function PantryPage() {
         {!loadingItems && items.length > 0 && (
           <div>
             <div className='flex items-center justify-between mb-8'>
-              <h2 className='text-3xl font-bold text-stone-900'>
+              <h2 className='text-3xl font-bold text-foreground'>
                 Your Ingredients
               </h2>
-              <div className='flex items-center gap-2 px-4 py-2 bg-white border border-stone-200 rounded-lg shadow-sm'>
+              <div className='flex items-center gap-2 px-4 py-2 bg-card border border-border rounded-lg shadow-sm'>
                 <Package className='w-4 h-4 text-orange-600' />
-                <span className='font-bold text-stone-900'>{items.length}</span>
-                <span className='text-stone-600 text-sm'>
+                <span className='font-bold text-foreground'>{items.length}</span>
+                <span className='text-muted-foreground text-sm'>
                   {items.length === 1 ? 'item' : 'items'}
                 </span>
               </div>
@@ -267,7 +267,7 @@ export default function PantryPage() {
               {items.map((item) => (
                 <div
                   key={item.documentId}
-                  className='group bg-white p-5 rounded-lg border border-stone-200 hover:shadow-md transition-all duration-200'
+                  className='group bg-card p-5 rounded-lg border border-border hover:shadow-md transition-all duration-200'
                 >
                   {editingId === item.documentId ? (
                     // Edit Mode
@@ -325,10 +325,10 @@ export default function PantryPage() {
                     // View Mode
                     <div>
                       <div className='mb-4'>
-                        <h3 className='font-semibold text-lg text-stone-900 mb-2'>
+                        <h3 className='font-semibold text-lg text-foreground mb-2'>
                           {item.name}
                         </h3>
-                        <p className='text-stone-600 text-sm'>
+                        <p className='text-muted-foreground text-sm'>
                           {item.quantity}
                         </p>
                       </div>
@@ -370,19 +370,19 @@ export default function PantryPage() {
         {/* Empty State */}
         {!loadingItems && items.length === 0 && (
           <div className='text-center py-32'>
-            <div className='inline-flex items-center justify-center w-24 h-24 bg-orange-100 rounded-full mb-6'>
-              <Package className='w-12 h-12 text-orange-600' />
+            <div className='inline-flex items-center justify-center w-24 h-24 bg-orange-100 dark:bg-orange-900/30 rounded-full mb-6'>
+              <Package className='w-12 h-12 text-orange-600 dark:text-orange-400' />
             </div>
-            <h3 className='text-3xl font-bold text-stone-900 mb-3'>
+            <h3 className='text-3xl font-bold text-foreground mb-3'>
               Your Pantry is Empty
             </h3>
-            <p className='text-stone-600 text-lg mb-8 max-w-lg mx-auto'>
+            <p className='text-muted-foreground text-lg mb-8 max-w-lg mx-auto'>
               Start by scanning your pantry with AI or adding ingredients
               manually to discover amazing recipes!
             </p>
             <Button
               onClick={() => setIsModalOpen(true)}
-              className='bg-orange-600 hover:bg-orange-700 text-white gap-2 px-8 py-6 text-lg rounded-lg shadow-md hover:shadow-xl transition-all'
+              className='bg-orange-600 hover:bg-orange-700 dark:bg-orange-500 dark:hover:bg-orange-600 text-white gap-2 px-8 py-6 text-lg rounded-lg shadow-md hover:shadow-xl transition-all'
             >
               <Plus className='w-5 h-5' />
               Add Your First Item

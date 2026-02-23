@@ -68,7 +68,7 @@ export default function RecipeCard({ recipe, variant = 'default' }) {
   if (variant === 'grid') {
     return (
       <Link href={data.href}>
-        <Card className='rounded-xl overflow-hidden border-stone-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer group h-full flex flex-col'>
+        <Card className='rounded-xl overflow-hidden border-border hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer group h-full flex flex-col'>
           {/* Image */}
           {data.showImage ? (
             <div className='relative aspect-[4/3] overflow-hidden'>
@@ -117,7 +117,7 @@ export default function RecipeCard({ recipe, variant = 'default' }) {
   // Variant: pantry (for AI-generated suggestions with match percentage)
   if (variant === 'pantry') {
     return (
-      <Card className='rounded-none border-stone-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden'>
+      <Card className='rounded-none border-border hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden'>
         {/* Image at top (if available) */}
         {data.showImage && (
           <div className='relative aspect-video'>
@@ -154,7 +154,7 @@ export default function RecipeCard({ recipe, variant = 'default' }) {
                 {data.cuisine && (
                   <Badge
                     variant='outline'
-                    className='text-orange-600 border-orange-200 capitalize'
+                    className='text-orange-600 dark:text-orange-400 border-orange-200 dark:border-orange-800 capitalize'
                   >
                     {data.cuisine}
                   </Badge>
@@ -162,7 +162,7 @@ export default function RecipeCard({ recipe, variant = 'default' }) {
                 {data.category && (
                   <Badge
                     variant='outline'
-                    className='text-stone-600 border-stone-200 capitalize'
+                    className='text-muted-foreground border-border capitalize'
                   >
                     {data.category}
                   </Badge>
@@ -183,17 +183,17 @@ export default function RecipeCard({ recipe, variant = 'default' }) {
                 >
                   {data.matchPercentage}%
                 </Badge>
-                <span className='text-xs text-stone-500'>Match</span>
+                <span className='text-xs text-muted-foreground'>Match</span>
               </div>
             )}
           </div>
 
-          <CardTitle className='text-2xl font-serif font-bold text-stone-900'>
+          <CardTitle className='text-2xl font-serif font-bold text-foreground'>
             {data.title}
           </CardTitle>
 
           {data.description && (
-            <CardDescription className='text-stone-600 leading-relaxed mt-2'>
+            <CardDescription className='text-muted-foreground leading-relaxed mt-2'>
               {data.description}
             </CardDescription>
           )}
@@ -202,7 +202,7 @@ export default function RecipeCard({ recipe, variant = 'default' }) {
         <CardContent className='space-y-4 flex-1'>
           {/* Time & Servings */}
           {(data.prepTime || data.cookTime || data.servings) && (
-            <div className='flex gap-4 text-sm text-stone-500'>
+            <div className='flex gap-4 text-sm text-muted-foreground'>
               {(data.prepTime || data.cookTime) && (
                 <div className='flex items-center gap-1'>
                   <Clock className='w-4 h-4' />
@@ -224,8 +224,8 @@ export default function RecipeCard({ recipe, variant = 'default' }) {
 
           {/* Missing Ingredients */}
           {data.missingIngredients && data.missingIngredients.length > 0 && (
-            <div className='p-4 bg-orange-50 border border-orange-100'>
-              <h4 className='text-sm font-semibold text-orange-900 mb-2'>
+            <div className='p-4 bg-orange-50 dark:bg-orange-950/20 border border-orange-100 dark:border-orange-900/30'>
+              <h4 className='text-sm font-semibold text-orange-900 dark:text-orange-400 mb-2'>
                 You&apos;ll need:
               </h4>
               <div className='flex flex-wrap gap-2'>
@@ -233,7 +233,7 @@ export default function RecipeCard({ recipe, variant = 'default' }) {
                   <Badge
                     key={i}
                     variant='outline'
-                    className='text-orange-700 border-orange-200 bg-white'
+                    className='text-orange-700 dark:text-orange-400 border-orange-200 dark:border-orange-800 bg-white dark:bg-background'
                   >
                     {ingredient}
                   </Badge>
@@ -245,7 +245,7 @@ export default function RecipeCard({ recipe, variant = 'default' }) {
 
         <CardFooter>
           <Link href={data.href} className='w-full'>
-            <Button className='w-full bg-green-600 hover:bg-green-700 text-white gap-2'>
+            <Button className='w-full bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white gap-2'>
               <ChefHat className='w-4 h-4' />
               View Full Recipe
             </Button>
@@ -259,7 +259,7 @@ export default function RecipeCard({ recipe, variant = 'default' }) {
   if (variant === 'list') {
     return (
       <Link href={data.href}>
-        <Card className='rounded-none border-stone-200 hover:shadow-lg hover:border-orange-200 transition-all cursor-pointer group overflow-hidden py-0'>
+        <Card className='rounded-none border-border hover:shadow-lg hover:border-orange-200 dark:hover:border-orange-800 transition-all cursor-pointer group overflow-hidden py-0'>
           <div className='flex flex-col md:flex-row'>
             {/* Image (if available) */}
             {data.showImage ? (
@@ -286,7 +286,7 @@ export default function RecipeCard({ recipe, variant = 'default' }) {
                   {data.cuisine && (
                     <Badge
                       variant='outline'
-                      className='text-orange-600 border-orange-200 capitalize'
+                      className='text-orange-600 dark:text-orange-400 border-orange-200 dark:border-orange-800 capitalize'
                     >
                       {data.cuisine}
                     </Badge>
@@ -294,14 +294,14 @@ export default function RecipeCard({ recipe, variant = 'default' }) {
                   {data.category && (
                     <Badge
                       variant='outline'
-                      className='text-stone-600 border-stone-200 capitalize'
+                      className='text-muted-foreground border-border capitalize'
                     >
                       {data.category}
                     </Badge>
                   )}
                 </div>
 
-                <CardTitle className='text-xl font-bold text-stone-900 group-hover:text-orange-600 transition-colors'>
+                <CardTitle className='text-xl font-bold text-foreground group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors'>
                   {data.title}
                 </CardTitle>
 
@@ -344,7 +344,7 @@ export default function RecipeCard({ recipe, variant = 'default' }) {
   // Default variant (fallback)
   return (
     <Link href={data.href}>
-      <Card className='rounded-none border-stone-200 hover:shadow-lg transition-all cursor-pointer overflow-hidden py-0'>
+      <Card className='rounded-none border-border hover:shadow-lg transition-all cursor-pointer overflow-hidden py-0'>
         {data.showImage && (
           <div className='relative aspect-video'>
             <Image

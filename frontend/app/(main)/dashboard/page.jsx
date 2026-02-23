@@ -22,14 +22,14 @@ export default async function DashboardPage() {
   const areas = areasData?.areas || []
 
   return (
-    <div className='min-h-screen  bg-gradient-to-br from-stone-100 via-orange-50 to-stone-100'>
+    <div className='min-h-screen  bg-gradient-to-br from-stone-100 via-orange-50 to-stone-100 dark:from-background dark:via-orange-950/10 dark:to-background'>
       {/* Asymmetric Masonry Layout */}
       <div className='container mx-auto px-6 py-12'>
         <div className='mb-5'>
-          <h1 className='text-5xl md:text-7xl font-bold text-stone-900 mb-4 tracking-tight leading-tight'>
+          <h1 className='text-5xl md:text-7xl font-bold text-foreground mb-4 tracking-tight leading-tight'>
             Fresh Recipes, Preppr Daily 🔥
           </h1>
-          <p className='text-xl text-stone-600 font-light max-w-2xl'>
+          <p className='text-xl text-muted-foreground font-light max-w-2xl'>
             Discover thousands of recipes from around the world. Cook, create,
             and savor.
           </p>
@@ -65,10 +65,10 @@ export default async function DashboardPage() {
                     </h2>
 
                     <div className='flex flex-wrap gap-2 mb-4'>
-                      <Badge className='bg-white/20 backdrop-blur-sm text-white border border-white/30 font-semibold'>
+                      <Badge className='bg-card/20 backdrop-blur-sm text-white border border-white/30 font-semibold'>
                         {recipeOfTheDay.strCategory}
                       </Badge>
-                      <Badge className='bg-white/20 backdrop-blur-sm text-white border border-white/30 font-semibold'>
+                      <Badge className='bg-card/20 backdrop-blur-sm text-white border border-white/30 font-semibold'>
                         <Globe className='w-3 h-3 mr-1' />
                         {recipeOfTheDay.strArea}
                       </Badge>
@@ -87,12 +87,12 @@ export default async function DashboardPage() {
             )}
 
             {/* Categories Grid */}
-            <div className='bg-white rounded-3xl p-6 my-6 border-2 border-stone-200'>
+            <div className='bg-card rounded-3xl p-6 my-6 border-2 border-stone-200'>
               <div className='flex items-center gap-3 mb-5'>
                 <div className='bg-orange-600 p-2 rounded-lg'>
                   <ChefHat className='w-5 h-5 text-white' />
                 </div>
-                <h2 className='text-2xl font-black text-stone-900'>
+                <h2 className='text-2xl font-black text-foreground'>
                   Browse Categories
                 </h2>
               </div>
@@ -107,7 +107,7 @@ export default async function DashboardPage() {
                       <div className='text-2xl mb-1'>
                         {getCategoryEmoji(category.strCategory)}
                       </div>
-                      <h3 className='font-bold text-stone-900 group-hover:text-orange-600 transition-colors text-[10px] leading-tight'>
+                      <h3 className='font-bold text-foreground group-hover:text-orange-600 transition-colors text-[10px] leading-tight'>
                         {category.strCategory}
                       </h3>
                     </div>
@@ -120,12 +120,12 @@ export default async function DashboardPage() {
           {/* Right Sidebar - Spans 4 columns */}
           <div className='lg:col-span-4 space-y-6'>
             {/* World Cuisines */}
-            <div className='bg-white rounded-3xl p-6 border-2 border-stone-200'>
+            <div className='bg-card rounded-3xl p-6 border-2 border-stone-200'>
               <div className='flex items-center gap-3 mb-5'>
                 <div className='bg-orange-600 p-2 rounded-lg'>
                   <Globe className='w-5 h-5 text-white' />
                 </div>
-                <h2 className='text-xl font-black text-stone-900'>
+                <h2 className='text-xl font-black text-foreground'>
                   World Cuisines
                 </h2>
               </div>
@@ -143,7 +143,7 @@ export default async function DashboardPage() {
                         <span className='text-2xl'>
                           {getCountryFlag(area.strArea)}
                         </span>
-                        <span className='font-bold text-stone-900 group-hover:text-orange-600 transition-colors text-sm flex-1'>
+                        <span className='font-bold text-foreground group-hover:text-orange-600 transition-colors text-sm flex-1'>
                           {area.strArea}
                         </span>
                         <ArrowRight className='w-3 h-3 text-stone-400 group-hover:text-orange-600 transition-all' />

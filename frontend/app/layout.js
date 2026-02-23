@@ -5,6 +5,7 @@ import { Toaster } from 'sonner'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { neobrutalism } from '@clerk/themes'
+import { ThemeProvider } from '@/components/ThemeProvider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -25,10 +26,17 @@ export default function RootLayout({ children }) {
           <link rel='icon' href='/logo.png' sizes='any' />
         </head>
         <body className={`${inter.className}`}>
-          <Header />
-          <main className='min-h-screen'>{children}</main>
-          <Toaster richColors />
-          <Footer />
+          <ThemeProvider
+            attribute='class'
+            defaultTheme='system'
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Header />
+            <main className='min-h-screen'>{children}</main>
+            <Toaster richColors />
+            <Footer />
+          </ThemeProvider>
         </body>
       </html>
     </ClerkProvider>
