@@ -212,23 +212,23 @@ function RecipeContent() {
 
   // Main recipe view
   return (
-    <div className='min-h-screen bg-background pt-24 pb-16 px-4'>
-      <div className='container mx-auto max-w-5xl'>
+    <div className='min-h-screen bg-background pt-20 sm:pt-24 pb-16 px-3 sm:px-4 overflow-x-hidden w-full'>
+      <div className='container mx-auto max-w-5xl w-full px-0'>
         {/* Header */}
-        <div className='mb-8'>
+        <div className='mb-6 sm:mb-8'>
           <Link
             href='/dashboard'
-            className='inline-flex items-center gap-2 text-muted-foreground hover:text-orange-600 transition-colors mb-6 font-medium'
+            className='inline-flex items-center gap-2 text-muted-foreground hover:text-orange-600 dark:hover:text-orange-400 transition-colors mb-4 sm:mb-6 font-medium text-sm sm:text-base'
           >
             <ArrowLeft className='w-4 h-4' />
             Back to Dashboard
           </Link>
 
           {/* Title Section */}
-          <div className='bg-card p-8 md:p-10 border-2 border-border mb-6'>
+          <div className='bg-card p-3 sm:p-4 md:p-6 lg:p-8 border-2 border-border mb-4 sm:mb-6 overflow-hidden w-full'>
             {/* Badges */}
             {recipe.imageUrl && (
-              <div className='relative w-full h-72 overflow-hidden mb-7'>
+              <div className='relative w-full h-48 sm:h-64 md:h-72 overflow-hidden -mx-3 sm:-mx-4 md:-mx-6 lg:-mx-8 -mt-3 sm:-mt-4 md:-mt-6 lg:-mt-8 mb-4 sm:mb-6'>
                 <Image
                   src={recipe.imageUrl}
                   alt={recipe.title}
@@ -240,47 +240,47 @@ function RecipeContent() {
               </div>
             )}
 
-            <div className='flex flex-wrap gap-2 mb-4'>
+            <div className='flex flex-wrap gap-2 mb-3 sm:mb-4'>
               <Badge
                 variant='outline'
-                className='text-orange-600 border-2 border-orange-200 capitalize'
+                className='text-orange-600 dark:text-orange-400 border-2 border-orange-200 dark:border-orange-800 capitalize text-xs sm:text-sm'
               >
                 {recipe.cuisine}
               </Badge>
               <Badge
                 variant='outline'
-                className='text-muted-foreground border-2 border-border capitalize'
+                className='text-muted-foreground border-2 border-border capitalize text-xs sm:text-sm'
               >
                 {recipe.category}
               </Badge>
             </div>
 
             {/* Title */}
-            <h1 className='text-4xl md:text-5xl font-bold text-foreground mb-4 tracking-tight'>
+            <h1 className='text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 sm:mb-4 tracking-tight leading-tight wrap-break-word overflow-wrap-anywhere'>
               {recipe.title}
             </h1>
 
             {/* Description */}
-            <p className='text-lg text-muted-foreground mb-6 font-light'>
+            <p className='text-base sm:text-lg text-muted-foreground mb-4 sm:mb-6 font-light leading-relaxed wrap-break-word'>
               {recipe.description}
             </p>
 
             {/* Meta Info */}
-            <div className='flex flex-wrap gap-6 text-muted-foreground mb-6'>
+            <div className='flex flex-wrap gap-4 sm:gap-6 text-muted-foreground mb-4 sm:mb-6 text-sm sm:text-base'>
               <div className='flex items-center gap-2'>
-                <Clock className='w-5 h-5 text-orange-600' />
+                <Clock className='w-4 h-4 sm:w-5 sm:h-5 text-orange-600 dark:text-orange-400 flex-shrink-0' />
                 <span className='font-medium'>
                   {parseInt(recipe.prepTime) + parseInt(recipe.cookTime)} mins
                   total
                 </span>
               </div>
               <div className='flex items-center gap-2'>
-                <Users className='w-5 h-5 text-orange-600' />
+                <Users className='w-4 h-4 sm:w-5 sm:h-5 text-orange-600 dark:text-orange-400 flex-shrink-0' />
                 <span className='font-medium'>{recipe.servings} servings</span>
               </div>
               {recipe.nutrition?.calories && (
                 <div className='flex items-center gap-2'>
-                  <Flame className='w-5 h-5 text-orange-600' />
+                  <Flame className='w-4 h-4 sm:w-5 sm:h-5 text-orange-600 dark:text-orange-400 flex-shrink-0' />
                   <span className='font-medium'>
                     {recipe.nutrition.calories} cal/serving
                   </span>
@@ -289,15 +289,15 @@ function RecipeContent() {
             </div>
 
             {/* Action Buttons */}
-            <div className='flex flex-wrap gap-3'>
+            <div className='flex flex-col sm:flex-row gap-3'>
               <Button
                 onClick={handleToggleSave}
                 disabled={saving || removing}
                 className={`${
                   isSaved
-                    ? 'bg-green-600 hover:bg-green-700 border-2 border-green-700'
-                    : 'bg-orange-600 hover:bg-orange-700 border-2 border-orange-700'
-                } text-white gap-2 transition-all`}
+                    ? 'bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 border-2 border-green-700 dark:border-green-500'
+                    : 'bg-orange-600 hover:bg-orange-700 dark:bg-orange-500 dark:hover:bg-orange-600 border-2 border-orange-700 dark:border-orange-500'
+                } text-white gap-2 transition-all w-full sm:w-auto text-sm sm:text-base`}
               >
                 {saving || removing ? (
                   <>
@@ -325,7 +325,7 @@ function RecipeContent() {
                 {({ loading }) => (
                   <Button
                     variant='outline'
-                    className='border-2 border-orange-600 text-orange-700 hover:bg-orange-50 gap-2'
+                    className='border-2 border-orange-600 dark:border-orange-500 text-orange-700 dark:text-orange-400 hover:bg-orange-50 dark:hover:bg-orange-900/30 gap-2 w-full sm:w-auto text-sm sm:text-base'
                     disabled={loading}
                   >
                     <Download className='w-4 h-4' />
@@ -337,14 +337,14 @@ function RecipeContent() {
           </div>
         </div>
 
-        <div className='grid lg:grid-cols-3 gap-6'>
+        <div className='grid lg:grid-cols-3 gap-4 sm:gap-6 w-full overflow-hidden'>
           {/* Left Column - Ingredients & Nutrition */}
-          <div className='lg:col-span-1 space-y-6'>
+          <div className='lg:col-span-1 space-y-4 sm:space-y-6 w-full min-w-0 overflow-hidden'>
             {/* Ingredients */}
-            <div className='bg-card p-6 border-2 border-border lg:sticky lg:top-24'>
-              <h2 className='text-2xl font-bold text-foreground mb-4 flex items-center gap-2'>
-                <ChefHat className='w-6 h-6 text-orange-600' />
-                Ingredients
+            <div className='bg-card p-3 sm:p-4 md:p-6 border-2 border-border lg:sticky lg:top-24 overflow-hidden w-full'>
+              <h2 className='text-lg sm:text-xl md:text-2xl font-bold text-foreground mb-3 sm:mb-4 flex items-center gap-2 break-words'>
+                <ChefHat className='w-5 h-5 sm:w-6 sm:h-6 text-orange-600 dark:text-orange-400 shrink-0' />
+                <span>Ingredients</span>
               </h2>
 
               {/* Group by category */}
@@ -356,24 +356,24 @@ function RecipeContent() {
                   return acc
                 }, {}),
               ).map(([category, items]) => (
-                <div key={category} className='mb-6 last:mb-0'>
-                  <h3 className='text-sm font-bold text-stone-500 uppercase tracking-wide mb-3'>
+                <div key={category} className='mb-4 sm:mb-6 last:mb-0'>
+                  <h3 className='text-xs sm:text-sm font-bold text-muted-foreground uppercase tracking-wide mb-2 sm:mb-3 break-words'>
                     {category}
                   </h3>
                   <ul className='space-y-2'>
                     {items.map((ingredient, i) => (
                       <li
                         key={i}
-                        className='py-3 border-b border-stone-100 last:border-0'
+                        className='py-2 sm:py-3 border-b border-border last:border-0'
                       >
-                        <div className='flex items-baseline justify-between gap-2 mb-1'>
-                          <span className='text-foreground font-medium'>
+                        <div className='flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 sm:gap-2 w-full overflow-hidden'>
+                          <span className='text-foreground font-medium text-sm sm:text-base wrap-break-word overflow-hidden'>
                             {ingredient.item}
                           </span>
+                          <span className='font-bold text-orange-600 dark:text-orange-400 text-xs sm:text-sm shrink-0 wrap-break-word'>
+                            {ingredient.amount}
+                          </span>
                         </div>
-                        <span className='font-bold text-orange-600 text-sm block'>
-                          {ingredient.amount}
-                        </span>
                       </li>
                     ))}
                   </ul>
@@ -382,11 +382,11 @@ function RecipeContent() {
 
               {/* Nutrition Info */}
               {recipe.nutrition && (
-                <div className='mt-6 pt-6 border-t-2 border-border'>
-                  <h3 className='font-bold text-foreground mb-3 uppercase tracking-wide text-sm flex items-center gap-2'>
-                    Nutrition (per serving)
+                <div className='mt-4 sm:mt-6 pt-4 sm:pt-6 border-t-2 border-border'>
+                  <h3 className='font-bold text-foreground mb-3 uppercase tracking-wide text-xs sm:text-sm flex items-center gap-2 flex-wrap'>
+                    <span>Nutrition (per serving)</span>
                     {!recipeData.isPro && (
-                      <span className='text-xs bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full font-semibold'>
+                      <span className='text-xs bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 px-2 py-0.5 rounded-full font-semibold'>
                         PRO
                       </span>
                     )}
@@ -396,39 +396,39 @@ function RecipeContent() {
                     isPro={recipeData.isPro}
                     lockText='Nutrition info is Pro-only'
                   >
-                    <div className='grid grid-cols-1 gap-3'>
-                      <div className='bg-orange-50 p-3 text-center border-2 border-orange-100'>
-                        <div className='text-lg font-bold text-orange-600'>
+                    <div className='grid grid-cols-2 sm:grid-cols-1 gap-2 sm:gap-3'>
+                      <div className='bg-orange-50 dark:bg-orange-900/30 p-3 text-center border-2 border-orange-100 dark:border-orange-800'>
+                        <div className='text-base sm:text-lg font-bold text-orange-600 dark:text-orange-400'>
                           {recipe.nutrition.calories}
                         </div>
-                        <div className='text-sm mt-2 text-stone-500 font-bold uppercase tracking-wide'>
+                        <div className='text-xs sm:text-sm mt-1 sm:mt-2 text-muted-foreground font-bold uppercase tracking-wide'>
                           Calories
                         </div>
                       </div>
 
-                      <div className='bg-background p-3 text-center border-2 border-stone-100'>
-                        <div className='text-lg font-bold text-foreground'>
+                      <div className='bg-background p-3 text-center border-2 border-border'>
+                        <div className='text-base sm:text-lg font-bold text-foreground'>
                           {recipe.nutrition.protein}
                         </div>
-                        <div className='text-xs text-stone-500 font-bold uppercase tracking-wide'>
+                        <div className='text-xs mt-1 sm:mt-2 text-muted-foreground font-bold uppercase tracking-wide'>
                           Protein
                         </div>
                       </div>
 
-                      <div className='bg-background p-3 text-center border-2 border-stone-100'>
-                        <div className='text-lg font-bold text-foreground'>
+                      <div className='bg-background p-3 text-center border-2 border-border'>
+                        <div className='text-base sm:text-lg font-bold text-foreground'>
                           {recipe.nutrition.carbs}
                         </div>
-                        <div className='text-xs text-stone-500 font-bold uppercase tracking-wide'>
+                        <div className='text-xs mt-1 sm:mt-2 text-muted-foreground font-bold uppercase tracking-wide'>
                           Carbs
                         </div>
                       </div>
 
-                      <div className='bg-background p-3 text-center border-2 border-stone-100'>
-                        <div className='text-lg font-bold text-foreground'>
+                      <div className='bg-background p-3 text-center border-2 border-border'>
+                        <div className='text-base sm:text-lg font-bold text-foreground'>
                           {recipe.nutrition.fat}
                         </div>
-                        <div className='text-xs text-stone-500 font-bold uppercase tracking-wide'>
+                        <div className='text-xs mt-1 sm:mt-2 text-muted-foreground font-bold uppercase tracking-wide'>
                           Fat
                         </div>
                       </div>
@@ -440,41 +440,41 @@ function RecipeContent() {
           </div>
 
           {/* Right Column - Instructions & Tips */}
-          <div className='lg:col-span-2 space-y-6'>
+          <div className='lg:col-span-2 space-y-4 sm:space-y-6 w-full min-w-0 overflow-hidden'>
             {/* Instructions */}
-            <div className='bg-card p-8 border-2 border-border'>
-              <h2 className='text-2xl font-bold text-foreground mb-6'>
+            <div className='bg-card p-3 sm:p-4 md:p-6 lg:p-8 border-2 border-border overflow-hidden w-full'>
+              <h2 className='text-lg sm:text-xl md:text-2xl font-bold text-foreground mb-4 sm:mb-6 break-words'>
                 Step-by-Step Instructions
               </h2>
 
-              <div>
+              <div className='overflow-hidden w-full'>
                 {recipe.instructions.map((step, index) => (
                   <div
                     key={step.step}
-                    className={`relative pl-12 pb-8 ${
+                    className={`relative pl-8 sm:pl-10 md:pl-12 pb-6 sm:pb-8 w-full ${
                       index !== recipe.instructions.length - 1
-                        ? 'border-l-2 border-orange-300 ml-5'
-                        : 'ml-5'
+                        ? 'border-l-2 border-orange-300 dark:border-orange-700 ml-3 sm:ml-4 md:ml-5'
+                        : 'ml-3 sm:ml-4 md:ml-5'
                     }`}
                   >
                     {/* Step Number */}
-                    <div className='absolute -left-5 top-0 w-10 h-10 bg-orange-600 text-white flex items-center justify-center font-bold border-2 border-orange-700'>
+                    <div className='absolute -left-3 sm:-left-4 md:-left-5 top-0 w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 bg-orange-600 dark:bg-orange-500 text-white flex items-center justify-center font-bold border-2 border-orange-700 dark:border-orange-500 text-xs sm:text-sm md:text-base shrink-0'>
                       {step.step}
                     </div>
 
                     {/* Step Content */}
-                    <div>
-                      <h3 className='font-bold text-lg text-foreground mb-2'>
+                    <div className='overflow-hidden w-full min-w-0'>
+                      <h3 className='font-bold text-sm sm:text-base md:text-lg text-foreground mb-2 wrap-break-word overflow-hidden'>
                         {step.title}
                       </h3>
-                      <p className='text-stone-700 font-light mb-3'>
+                      <p className='text-muted-foreground font-light mb-3 text-xs sm:text-sm md:text-base leading-relaxed wrap-break-word overflow-hidden'>
                         {step.instruction}
                       </p>
                       {step.tip && (
-                        <div className='bg-orange-50 border-l-4 border-orange-600 p-4'>
-                          <p className='text-sm text-orange-900 flex items-start gap-2'>
-                            <Lightbulb className='w-4 h-4 mt-0.5 flex-shrink-0 fill-orange-600' />
-                            <span>
+                        <div className='bg-orange-50 dark:bg-orange-900/20 border-l-4 border-orange-600 dark:border-orange-500 p-2 sm:p-3 md:p-4 overflow-hidden w-full'>
+                          <p className='text-xs sm:text-sm text-orange-900 dark:text-orange-400 flex items-start gap-2 overflow-hidden'>
+                            <Lightbulb className='w-3 h-3 sm:w-4 sm:h-4 mt-0.5 shrink-0 fill-orange-600 dark:fill-orange-500' />
+                            <span className='wrap-break-word overflow-hidden min-w-0'>
                               <strong className='font-bold'>Pro Tip:</strong>{' '}
                               {step.tip}
                             </span>
@@ -487,14 +487,14 @@ function RecipeContent() {
               </div>
 
               {/* Completion Message */}
-              <div className='mt-8 p-6 bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200'>
+              <div className='mt-6 sm:mt-8 p-4 sm:p-6 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950/20 dark:to-emerald-950/20 border-2 border-green-200 dark:border-green-800'>
                 <div className='flex items-start gap-3'>
-                  <CheckCircle2 className='w-6 h-6 text-green-600 flex-shrink-0 mt-0.5' />
+                  <CheckCircle2 className='w-5 h-5 sm:w-6 sm:h-6 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5' />
                   <div>
-                    <h3 className='font-bold text-green-900 mb-1'>
+                    <h3 className='font-bold text-green-900 dark:text-green-400 mb-1 text-sm sm:text-base'>
                       You&apos;re all done!
                     </h3>
-                    <p className='text-sm text-green-800 font-light'>
+                    <p className='text-xs sm:text-sm text-green-800 dark:text-green-500 font-light'>
                       Plate your masterpiece and enjoy your delicious{' '}
                       {recipe.title}!
                     </p>
@@ -505,12 +505,12 @@ function RecipeContent() {
 
             {/* General Tips */}
             {recipe.tips && recipe.tips.length > 0 && (
-              <div className='bg-gradient-to-br from-orange-50 to-amber-50 p-8 border-2 border-orange-200'>
-                <h2 className='text-2xl font-bold text-foreground mb-4 flex items-center gap-2'>
-                  <Lightbulb className='w-6 h-6 text-orange-600 fill-orange-600' />
-                  Chef&apos;s Tips & Tricks
+              <div className='bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-950/20 dark:to-amber-950/20 p-3 sm:p-4 md:p-6 lg:p-8 border-2 border-orange-200 dark:border-orange-800 overflow-hidden w-full'>
+                <h2 className='text-lg sm:text-xl md:text-2xl font-bold text-foreground mb-4 flex items-center gap-2 flex-wrap break-words'>
+                  <Lightbulb className='w-5 h-5 sm:w-6 sm:h-6 text-orange-600 dark:text-orange-400 fill-orange-600 dark:fill-orange-400 shrink-0' />
+                  <span>Chef&apos;s Tips & Tricks</span>
                   {!recipeData.isPro && (
-                    <span className='text-xs bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full font-semibold'>
+                    <span className='text-xs bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 px-2 py-0.5 rounded-full font-semibold shrink-0'>
                       PRO
                     </span>
                   )}
@@ -521,14 +521,14 @@ function RecipeContent() {
                   lockText='Chef tips are Pro-only'
                   ctaText='Unlock Pro Tips →'
                 >
-                  <ul className='space-y-3'>
+                  <ul className='space-y-2 sm:space-y-3'>
                     {recipe.tips.map((tip, i) => (
                       <li
                         key={i}
-                        className='flex items-start gap-3 text-stone-700'
+                        className='flex items-start gap-2 sm:gap-3 text-muted-foreground overflow-hidden w-full'
                       >
-                        <CheckCircle2 className='w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5' />
-                        <span className='font-light'>{tip}</span>
+                        <CheckCircle2 className='w-4 h-4 sm:w-5 sm:h-5 text-orange-600 dark:text-orange-400 shrink-0 mt-0.5' />
+                        <span className='font-light text-xs sm:text-sm md:text-base wrap-break-word overflow-hidden min-w-0 flex-1'>{tip}</span>
                       </li>
                     ))}
                   </ul>
@@ -538,17 +538,17 @@ function RecipeContent() {
 
             {/* Substitutions */}
             {recipe.substitutions && recipe.substitutions.length > 0 && (
-              <div className='bg-card p-8 border-2 border-border'>
-                <h2 className='text-2xl font-bold text-foreground mb-4 flex items-center gap-2'>
-                  Ingredient Substitutions
+              <div className='bg-card p-3 sm:p-4 md:p-6 lg:p-8 border-2 border-border overflow-hidden w-full'>
+                <h2 className='text-lg sm:text-xl md:text-2xl font-bold text-foreground mb-3 sm:mb-4 flex items-center gap-2 flex-wrap break-words'>
+                  <span>Ingredient Substitutions</span>
                   {!recipeData.isPro && (
-                    <span className='text-xs bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full font-semibold'>
+                    <span className='text-xs bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 px-2 py-0.5 rounded-full font-semibold shrink-0'>
                       PRO
                     </span>
                   )}
                 </h2>
 
-                <p className='text-muted-foreground mb-6 text-sm font-light'>
+                <p className='text-muted-foreground mb-4 sm:mb-6 text-xs sm:text-sm font-light'>
                   Don&apos;t have everything? Here are some alternatives you can
                   use:
                 </p>
@@ -557,25 +557,25 @@ function RecipeContent() {
                   isPro={recipeData.isPro}
                   lockText='Substitutions are Pro-only'
                 >
-                  <div className='space-y-4'>
+                  <div className='space-y-3 sm:space-y-4'>
                     {recipe.substitutions.map((sub, i) => (
                       <div
                         key={i}
-                        className='border-b-2 border-stone-100 pb-4 last:border-0 last:pb-0'
+                        className='border-b-2 border-border pb-3 sm:pb-4 last:border-0 last:pb-0 overflow-hidden w-full'
                       >
-                        <h3 className='font-bold text-foreground mb-2'>
+                        <h3 className='font-bold text-foreground mb-2 text-xs sm:text-sm md:text-base wrap-break-word overflow-hidden'>
                           Instead of{' '}
-                          <span className='text-orange-600'>
+                          <span className='text-orange-600 dark:text-orange-400'>
                             {sub.original}
                           </span>
                           :
                         </h3>
-                        <div className='flex flex-wrap gap-2'>
+                        <div className='flex flex-wrap gap-2 overflow-hidden w-full'>
                           {sub.alternatives.map((alt, j) => (
                             <Badge
                               key={j}
                               variant='outline'
-                              className='text-muted-foreground border-2 border-border'
+                              className='text-muted-foreground border-2 border-border text-xs sm:text-sm wrap-break-word max-w-full'
                             >
                               {alt}
                             </Badge>
